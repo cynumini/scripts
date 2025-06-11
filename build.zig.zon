@@ -1,0 +1,21 @@
+.{
+    .name = .scripts,
+
+    .version = "0.0.0",
+
+    .fingerprint = 0xdd1e973e9c440865,
+
+    .minimum_zig_version = "0.15.0-dev.769+4d7980645",
+
+    .dependencies = .{
+        .sakana = .{
+            .path = "sakana",
+        },
+    },
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
