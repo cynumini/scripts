@@ -4,12 +4,20 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
+    const sakana = b.dependency("sakana", .{
+        .target = target,
+        .optimize = optimize,
+    });
+
     const exe = b.addExecutable(.{
-        .name = "scripts",
+        .name = "wofi-mute",
         .root_module = b.createModule(.{
-            .root_source_file = b.path("src/main.zig"),
+            .root_source_file = b.path("src/wofi-mute.zig"),
             .target = target,
             .optimize = optimize,
+            .imports = &.{
+                .{ .name = "sakana", .module = sakana.module("sakana") },
+            },
         }),
     });
 
